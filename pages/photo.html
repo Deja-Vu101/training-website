@@ -3,78 +3,111 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Фотографії зайців">
-  <title>Фотографії зайців</title>
-  <link href="../css/style.css" rel="stylesheet">
+  <meta name="description" content="Фотографії бурого ведмедя">
+  <title>Фотографії бурого ведмедя</title>
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+
+  <style>
+    .carousel img {
+      height: 500px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  </style>
 </head>
-<body class="custom-green-theme">
-  <header class="text-center bg-success text-white py-3">
-    <h1>Фотографії зайців</h1>
-    <nav class="nav justify-content-center">
-      <a href="../index.html" class="nav-link text-white">Головна</a>
-      <a href="morphology.html" class="nav-link text-white">Зовнішній вигляд</a>
-      <a href="nutrition.html" class="nav-link text-white">Харчування</a>
-      <a href="population.html" class="nav-link text-white">Ареал</a>
-    </nav>
-  </header>
 
-  <main class="container py-4">
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <a href="../images/1200px-haas-in-het-grasjpg.webp" target="_blank">
-            <img src="../images/1200px-haas-in-het-grasjpg.webp" class="d-block w-100" alt="Зайці в траві">
-          </a>
-        </div>
-        <div class="carousel-item">
-          <a href="../images/1200px-hasebeioberwerbejpg.webp" target="_blank">
-            <img src="../images/1200px-hasebeioberwerbejpg.webp" class="d-block w-100" alt="Зайці в полі">
-          </a>
-        </div>
-        <div class="carousel-item">
-          <a href="../images/european-hare-6121jpg.webp" target="_blank">
-            <img src="../images/european-hare-6121jpg.webp" class="d-block w-100" alt="Європейський заєць">
-          </a>
-        </div>
-        <div class="carousel-item">
-          <a href="../images/fFKuESpf7VTCGBNPscig.webp" target="_blank">
-            <img src="../images/fFKuESpf7VTCGBNPscig.webp" class="d-block w-100" alt="Зайці на лузі">
-          </a>
-        </div>
-        <div class="carousel-item">
-          <a href="../images/halljnes.webp" target="_blank">
-            <img src="../images/halljnes.webp" class="d-block w-100" alt="Зайці в лісі">
-          </a>
-        </div>
-        <div class="carousel-item">
-          <a href="../images/zu6YRoYqGYVyExZ54dDT.webp" target="_blank">
-            <img src="../images/zu6YRoYqGYVyExZ54dDT.webp" class="d-block w-100" alt="Зайці на лузі">
-          </a>
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+<body class="brown-theme">
+
+<header class="text-center bg-success text-white py-3">
+  <h1>Фотографії бурого ведмедя</h1>
+  <nav class="nav justify-content-center">
+    <a href="../index.html" class="nav-link text-white">Головна</a>
+    <a href="morphology.html" class="nav-link text-white">Зовнішній вигляд</a>
+    <a href="nutrition.html" class="nav-link text-white">Харчування</a>
+    <a href="population.html" class="nav-link text-white">Ареал</a>
+  </nav>
+</header>
+
+<main class="container py-4">
+
+  <h2 class="text-center text-success mb-4">Галерея</h2>
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"></button>
     </div>
-  </main>
 
-  <footer class="text-center bg-dark text-white py-2">
-    <p>&copy; 2026 Сайт про зайців</p>
-  </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="carousel-inner">
+
+      <div class="carousel-item active">
+        <img src="../images/natural_environment.jpg" class="d-block w-100" alt="Бурий ведмідь у лісі">
+        <div class="carousel-caption">
+          <p>Ведмідь у природному середовищі</p>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <img src="../images/brown-bear-water-hunt.jpg" class="d-block w-100" alt="Ведмідь біля річки">
+        <div class="carousel-caption">
+          <p>Полювання біля води</p>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <img src="../images/Brown_bear.jpg" class="d-block w-100" alt="Ведмідь на галявині">
+        <div class="carousel-caption">
+          <p>Ведмідь на галявині</p>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <img src="../images/little_bear.jpg" class="d-block w-100" alt="Маленьке ведмежа">
+        <div class="carousel-caption">
+          <p>Ведмежа</p>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <img src="../images/bear-in-winter.jpg" class="d-block w-100" alt="Ведмідь взимку">
+        <div class="carousel-caption">
+          <p>Ведмідь взимку</p>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <img src="../images/bear-in-the-forest.jpg" class="d-block w-100" alt="Ведмідь у горах">
+        <div class="carousel-caption">
+          <p>Ведмідь у гірській місцевості</p>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+
+  </div>
+
+</main>
+
+<footer class="text-center bg-dark text-white py-2">
+  <p>&copy; 2026 Сайт про бурого ведмедя</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

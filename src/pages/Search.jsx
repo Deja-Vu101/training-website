@@ -10,59 +10,77 @@ function Search() {
 
   useEffect(() => {
     if (query) {
-      document.title = `Пошук: ${query} - Сайт про зайців`;
+      document.title = `Пошук: ${query} - Сайт про бурого ведмедя`;
       handleSearch(query);
+    } else {
+      document.title = 'Пошук - Сайт про бурого ведмедя';
     }
   }, [query, handleSearch]);
 
   const highlightText = (text, searchTerm) => {
-    if (!searchTerm) return text;
-    
-    const parts = text.split(new RegExp(`(${searchTerm})`, 'gi'));
-    return parts.map((part, index) => 
-      part.toLowerCase() === searchTerm.toLowerCase() ? 
-        <mark key={index} className="bg-warning">{part}</mark> : part
+    if (!searchTerm) {
+      return text;
+    }
+
+    const escapedSearchTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const parts = text.split(new RegExp(`(${escapedSearchTerm})`, 'gi'));
+
+    return parts.map((part, index) =>
+      part.toLowerCase() === searchTerm.toLowerCase() ? (
+        <mark key={index} className="bg-warning">
+          {part}
+        </mark>
+      ) : (
+        part
+      )
     );
   };
 
   return (
     <main className="container px-4 py-4">
-      <div className="row">
-        <div className="col-12">
-          <h2 className="h2 text-success mb-4">Результати пошуку</h2>
-          {query && <p className="mb-4">Пошуковий запит: "{query}"</p>}
-          
-          {searchResults.length > 0 ? (
-            <div className="row">
-              {searchResults.map((result, index) => (
-                <div key={index} className="col-12 mb-4">
-                  <div className="card">
-                    <div className="card-body">
-                      <h3 className="h5 card-title text-success">
-                        {highlightText(result.title, query)}
-                      </h3>
-                      <p className="card-text text-muted">
-                        {highlightText(result.excerpt, query)}
-                      </p>
-                      <button 
-                        onClick={() => navigate(result.path)}
-                        className="btn btn-success"
-                        aria-label={`Перейти до сторінки ${result.title}`}
-                      >
-                        Перейти на сторінку
-                      </button>
-                    </div>
+      <section>
+        <h2 className="h2 text-success mb-4">Результати пошуку</h2>
+
+        {query && (
+          <p className="mb-4">
+            Пошуковий запит: <strong>"{query}"</strong>
+          </p>
+        )}
+
+        {searchResults.length > 0 ? (
+          <div className="row">
+            {searchResults.map((result, index) => (
+              <div key={index} className="col-12 mb-4">
+                <div className="card">
+                  <div className="card-body">
+                    <h3 className="h5 card-title text-success">
+                      {highlightText(result.title, query)}
+                    </h3>
+
+                    <p className="card-text text-muted">
+                      {highlightText(result.excerpt, query)}
+                    </p>
+
+                    <button
+                      onClick={() => navigate(result.path)}
+                      className="btn btn-success"
+                      aria-label={`Перейти до сторінки ${result.title}`}
+                    >
+                      Перейти на сторінку
+                    </button>
                   </div>
                 </div>
-              ))}
-            </div>
-          ) : (
-            <div className="alert alert-info">
-              {query ? 'За вашим запитом нічого не знайдено' : 'Введіть пошуковий запит у полі пошуку зверху'}
-            </div>
-          )}
-        </div>
-      </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="alert alert-info">
+            {query
+              ? 'За вашим запитом нічого не знайдено'
+              : 'Введіть пошуковий запит у полі пошуку зверху'}
+          </div>
+        )}
+      </section>
     </main>
   );
 }

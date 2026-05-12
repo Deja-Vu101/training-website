@@ -1,17 +1,19 @@
-/* Змінні кольорів та значень */
+/* Brown Bear Theme */
 :root {
-  --color-primary: #28a745;
-  --color-primary-dark: #155724;
-  --color-bg-light: #d4edda;
-  --color-bg-medium: #c3e6cb;
-  --color-bg-hover: #b1dfbb;
+  --color-primary: #8b5e3c;
+  --color-primary-dark: #3e2c23;
+  --color-primary-hover: #6b4423;
+
+  --color-bg-light: #f5f1e6;
+  --color-bg-medium: #ede0d4;
+  --color-bg-hover: #e6ccb2;
+
   --spacing-base: 1rem;
-  --header-height: 60px;
   --transition-base: 0.2s ease;
-  --shadow-base: 0 4px 8px rgba(40, 167, 69, 0.2);
+  --shadow-base: 0 4px 8px rgba(62, 44, 35, 0.2);
 }
 
-/* Базові стилі */
+/* Base layout */
 body {
   display: flex;
   flex-direction: column;
@@ -19,7 +21,6 @@ body {
   min-height: 100vh;
 }
 
-/* Layout styles for sticky footer */
 main {
   flex: initial;
   min-height: initial;
@@ -30,18 +31,49 @@ footer {
   margin-top: auto;
 }
 
-/* Компоненти */
+/* Theme wrapper */
+.custom-green-theme,
+.brown-theme {
+  background-color: var(--color-bg-light);
+  color: var(--color-primary-dark);
+  min-height: 100vh;
+}
+
+/* Recolor Bootstrap green classes to brown */
+.bg-success {
+  background: linear-gradient(90deg, #6b4423, #8b5e3c) !important;
+}
+
+.text-success {
+  color: var(--color-primary) !important;
+}
+
+.btn-success {
+  background-color: var(--color-primary) !important;
+  border: none !important;
+}
+
+.btn-success:hover,
+.btn-success:focus {
+  background-color: var(--color-primary-hover) !important;
+}
+
+/* Header */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 1020;
 }
 
+header {
+  background: linear-gradient(90deg, #6b4423, #8b5e3c);
+}
+
 .header-container {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 0 1rem;
+  padding: 0.75rem 1rem;
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
@@ -49,7 +81,7 @@ footer {
 
 .logo-container {
   flex-shrink: 0;
-  width: 250px;
+  width: 270px;
 }
 
 .site-logo {
@@ -58,6 +90,7 @@ footer {
   width: 40px;
 }
 
+/* Navigation */
 .main-nav {
   display: flex;
   flex-wrap: nowrap;
@@ -66,180 +99,60 @@ footer {
   width: 100%;
 }
 
-@media (max-width: 991px) {
-  .main-nav {
-    flex-direction: column;
-    align-items: center;
-    max-width: 100%;
-    margin: 0.5rem 0;
-  }
-
-  .nav-link {
-    width: 100%;
-    text-align: center;
-    padding: 0.5rem 1rem;
-  }
-}
-
 .nav-link {
   align-items: center;
   display: inline-flex;
   padding: calc(var(--spacing-base) * 0.5) var(--spacing-base);
   position: relative;
-  white-space: nowrap;
-}
-
-.nav-link::after {
-  background: currentColor;
-  bottom: 0;
-  content: '';
-  height: 2px;
-  left: 0;
-  opacity: 0;
-  position: absolute;
-  transform: translateY(3px);
-  transition: opacity var(--transition-base), transform var(--transition-base);
-  width: 100%;
-}
-
-.nav-link:hover::after,
-.nav-link.active::after {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.nav-link {
-  color: rgba(255, 255, 255, 0.9);
-  padding: var(--spacing-base);
   text-decoration: none;
   transition: all var(--transition-base);
   white-space: nowrap;
 }
 
-.nav-link:hover,
-.nav-link:focus {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
+header .nav-link:hover,
+header .nav-link:focus {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff !important;
 }
 
-.nav-link.active {
-  background: rgba(0, 0, 0, 0.15);
-  color: #fff;
+header .nav-link.active {
+  background: rgba(0, 0, 0, 0.18);
+  color: #fff !important;
 }
 
-/* Контейнер для пошуку */
+aside .nav-link {
+  color: var(--color-primary) !important;
+}
+
+aside .nav-link:hover,
+aside .nav-link:focus {
+  background-color: var(--color-bg-hover) !important;
+  color: var(--color-primary-dark) !important;
+}
+
+aside .nav-link.active {
+  background-color: var(--color-bg-medium) !important;
+  color: var(--color-primary-dark) !important;
+}
+
+/* Search */
 .search-container {
   flex-shrink: 0;
   min-width: 250px;
   width: 250px;
 }
 
-/* Глобальні налаштування для всіх посилань навігації */
-.nav-link,
-.nav-link:hover,
-.nav-link:focus,
-.nav-link:active,
-.nav-link.active {
-  text-decoration: none;
-}
-
-/* Оновлені стилі теми */
-.custom-green-theme {
-  background-color: var(--color-bg-light);
-  color: var(--color-primary-dark);
-  min-height: 100vh;
-}
-
-.custom-green-theme .nav-link {
-  color: var(--color-primary);
-}
-
-.custom-green-theme .nav-link:hover {
-  color: var(--color-primary-dark);
-}
-
-.custom-green-theme .list-group-item {
+/* Lists and cards */
+.list-group-item {
   background-color: var(--color-bg-medium);
   color: var(--color-primary-dark);
   transition: background-color var(--transition-base);
 }
 
-.custom-green-theme .list-group-item:hover {
+.list-group-item:hover {
   background-color: var(--color-bg-hover);
 }
 
-/* Каруселі */
-.carousel {
-  margin-bottom: calc(var(--spacing-base) * 3);
-}
-
-.carousel-item {
-  border-radius: 25px;
-  overflow: hidden;
-}
-
-.carousel-item img {
-  border-radius: 25px;
-  max-height: 500px;
-  object-fit: cover;
-  width: 100%;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-color: rgba(200, 200, 200, 0.9);
-  border-radius: 50%;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-  height: 70px;
-  padding: 18px;
-  transition: transform var(--transition-base);
-  width: 70px;
-}
-
-.carousel-control:hover {
-  background: #b4b4b4;
-  transform: scale(1.1);
-}
-
-.carousel-indicators {
-  bottom: -50px;
-}
-
-.carousel-indicators button {
-  border: 2px solid #28a745 !important;
-  border-radius: 50% !important;
-  height: 20px !important;
-  margin: 0 12px !important;
-  padding: 0 !important;
-  width: 20px !important;
-}
-
-.carousel-indicators button.active {
-  background-color: #155724;
-  opacity: 1;
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-  opacity: 1;
-  width: 15%;
-}
-
-.carousel-indicators [data-bs-target]:hover {
-  transform: scale(1.1);
-}
-
-.carousel-indicators .active {
-  background-color: #28a745;
-  opacity: 1;
-  transform: scale(1.2);
-}
-
-#carouselExampleIndicators {
-  margin-bottom: 3rem;
-}
-
-/* Стилі для інтерактивних елементів */
 .card.cursor-pointer {
   transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
@@ -249,38 +162,88 @@ footer {
   transform: translateY(-2px);
 }
 
-/* Responsive styles */
-@media (max-width: 991px) {
-  .header-container {
-    flex-direction: column;
-    padding: 1rem;
-  }
-
-  .logo-container {
-    margin-bottom: 1rem;
-    width: 100%;
-  }
-
-  .nav-main {
-    flex-wrap: wrap;
-    margin: 1rem 0;
-    width: 100%;
-  }
-
-  .search-container {
-    margin-top: 1rem;
-    width: 100%;
-  }
-
-  .carousel-control-prev-icon,
-  .carousel-control-next-icon {
-    height: 40px;
-    padding: 10px;
-    width: 40px;
-  }
+/* Footer */
+footer {
+  background-color: var(--color-primary-dark) !important;
+  color: #fff;
+  border-top: 5px solid var(--color-primary);
 }
 
-/* Fix for long country lists in Population page */
+/* Carousel */
+.carousel {
+  background-color: #2c1b12;
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: calc(var(--spacing-base) * 3);
+}
+
+.carousel-item {
+  height: 500px;
+  background-color: #000;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.carousel-item img,
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  max-height: 500px;
+  object-fit: contain !important;
+  border-radius: 15px;
+}
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  opacity: 1;
+  width: 15%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 60px;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  transition: transform var(--transition-base);
+}
+
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+  transform: scale(1.1);
+}
+
+.carousel-indicators {
+  bottom: -50px;
+}
+
+.carousel-indicators button {
+  border: 2px solid var(--color-primary) !important;
+  background-color: #fff !important;
+  border-radius: 50% !important;
+  height: 18px !important;
+  margin: 0 10px !important;
+  padding: 0 !important;
+  width: 18px !important;
+}
+
+.carousel-indicators .active {
+  background-color: var(--color-primary) !important;
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+#carouselExampleIndicators {
+  margin-bottom: 3rem;
+}
+
+/* Long lists */
 @media (min-width: 768px) {
   .list-columns {
     column-count: 3;
@@ -295,12 +258,55 @@ footer {
   }
 }
 
+/* Responsive */
+@media (max-width: 991px) {
+  .header-container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .logo-container {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  .main-nav {
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  .nav-link {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 0.5rem 1rem;
+  }
+
+  .search-container {
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    height: 40px;
+    width: 40px;
+  }
+}
+
 @media (max-width: 480px) {
   .list-columns {
     column-count: 1;
   }
 
-  .carousel-item img {
+  .carousel-item {
+    height: 300px;
+  }
+
+  .carousel-item img,
+  .gallery-image {
     max-height: 300px;
   }
 }

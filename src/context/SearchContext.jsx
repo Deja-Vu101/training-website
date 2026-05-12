@@ -1,9 +1,4 @@
 import { createContext, useContext, useState } from 'react';
-import Home from '../pages/Home';
-import Morphology from '../pages/Morphology';
-import Nutrition from '../pages/Nutrition';
-import Population from '../pages/Population';
-import Photo from '../pages/Photo';
 
 const SearchContext = createContext();
 
@@ -11,27 +6,32 @@ const PAGES = [
   {
     path: '/',
     title: 'Головна',
-    component: Home
+    content:
+      'Бурий ведмідь бурих ведмедів головна сторінка сайт про бурого ведмедя морфологія харчування популяція ареал фотогалерея'
   },
   {
     path: '/morphology',
-    title: 'Зовнішній вигляд зайців',
-    component: Morphology
+    title: 'Зовнішній вигляд бурого ведмедя',
+    content:
+      'Зовнішній вигляд бурий ведмідь великий ссавець масивне тіло густе хутро потужні лапи шерсть світло-коричнева темно-бура велика голова маленькі очі короткий хвіст довжина тіла 2–3 м маса 100–600 кг кігті нюх зимова сплячка'
   },
   {
     path: '/nutrition',
-    title: 'Харчування зайців',
-    component: Nutrition
+    title: 'Харчування бурого ведмедя',
+    content:
+      'Харчування бурий ведмідь раціон всеїдний ягоди риба мясо мʼясо мед їжа'
   },
   {
     path: '/population',
-    title: 'Ареал зайців',
-    component: Population
+    title: 'Ареал бурого ведмедя',
+    content:
+      'Ареал бурий ведмідь континенти Європа Азія Північна Америка регіони Скандинавія Карпати Балкани Кавказ Сибір Аляска Західна Канада країни Україна Польща Румунія Словаччина Фінляндія Швеція Норвегія Росія Грузія Туреччина Іран Монголія Китай Японія Канада США середовище проживання хвойні мішані ліси гірські райони тайга лісотундра долини річок біогеографічні зони Палеарктика Неарктика WWF біоми'
   },
   {
     path: '/photo',
-    title: 'Фотографії зайців',
-    component: Photo
+    title: 'Фотографії бурого ведмедя',
+    content:
+      'Фотографії фотогалерея галерея бурий ведмідь у лісі природне середовище полювання біля води річка галявина ведмежа ведмідь взимку гірська місцевість'
   }
 ];
 
@@ -39,36 +39,10 @@ export function SearchProvider({ children }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
-  const extractTextContent = (element) => {
-    if (!element) return '';
-    if (typeof element === 'string') return element;
-    if (Array.isArray(element)) {
-      return element.map(extractTextContent).join(' ');
-    }
-    if (typeof element === 'object') {
-      if (element.props) {
-        if (element.props.children) {
-          return extractTextContent(element.props.children);
-        }
-        return '';
-      }
-      return '';
-    }
-    return '';
-  };
+  const handleSearch = (term) => {
+    const normalizedTerm = term.trim().toLowerCase();
 
-  const getPageContent = (Component) => {
-    try {
-      const rendered = Component();
-      return extractTextContent(rendered);
-    } catch (e) {
-      console.error('Error extracting content from component:', e);
-      return '';
-    }
-  };
-
-  const handleSearch = async (term) => {
-    if (!term.trim()) {
+    if (!normalizedTerm) {
       setSearchResults([]);
       setSearchTerm('');
       return;
@@ -76,17 +50,15 @@ export function SearchProvider({ children }) {
 
     setSearchTerm(term);
 
-    const results = PAGES.filter(page => {
-      const searchTermLower = term.toLowerCase();
-      const pageContent = getPageContent(page.component);
-      return (
-        page.title.toLowerCase().includes(searchTermLower) ||
-        pageContent.toLowerCase().includes(searchTermLower)
-      );
-    }).map(page => ({
+    const results = PAGES.filter((page) => {
+      const title = page.title.toLowerCase();
+      const content = page.content.toLowerCase();
+
+      return title.includes(normalizedTerm) || content.includes(normalizedTerm);
+    }).map((page) => ({
       title: page.title,
       path: page.path,
-      excerpt: getPageContent(page.component).substring(0, 150) + '...',
+      excerpt: page.content.substring(0, 180) + '...'
     }));
 
     setSearchResults(results);
@@ -97,7 +69,7 @@ export function SearchProvider({ children }) {
     setSearchTerm,
     searchResults,
     setSearchResults,
-    handleSearch,
+    handleSearch
   };
 
   return (
@@ -109,8 +81,10 @@ export function SearchProvider({ children }) {
 
 export function useSearch() {
   const context = useContext(SearchContext);
+
   if (context === undefined) {
     throw new Error('useSearch must be used within a SearchProvider');
   }
+
   return context;
 }

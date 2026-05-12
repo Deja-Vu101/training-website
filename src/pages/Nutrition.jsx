@@ -1,15 +1,21 @@
 function Nutrition() {
   return (
-    <main className="container px-4 py-4 flex-grow-1">
-      <section>
-        <h2 className="h2 text-success mb-4">Харчування зайців</h2>
-        <p>Зайці є травоїдними тваринами. Їх раціон включає:</p>
+    <main className="container py-4">
+      <article>
+        <h2 className="h2 text-success">Раціон бурих ведмедів</h2>
+
+        <p>
+          Бурий ведмідь є всеїдною твариною. Його раціон залежить від пори року,
+          місця проживання та доступної їжі.
+        </p>
+
         <ul className="list-group">
-          <li className="list-group-item">Траву, листя і кору дерев.</li>
-          <li className="list-group-item">Овочі, такі як морква та капуста.</li>
-          <li className="list-group-item">Воду, яку вони споживають у великих кількостях.</li>
+          <li className="list-group-item">Ягоди</li>
+          <li className="list-group-item">Риба</li>
+          <li className="list-group-item">Мʼясо</li>
+          <li className="list-group-item">Мед</li>
         </ul>
-      </section>
+      </article>
     </main>
   );
 }

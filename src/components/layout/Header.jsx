@@ -10,6 +10,7 @@ function Header() {
 
   const onSubmit = (event) => {
     event.preventDefault();
+
     if (searchInput.trim()) {
       handleSearch(searchInput);
       navigate(`/search?query=${encodeURIComponent(searchInput)}`);
@@ -21,30 +22,49 @@ function Header() {
       <div className="container-fluid header-container">
         <div className="logo-container">
           <Link to="/" className="text-white text-decoration-none d-flex align-items-center">
-            <img 
-              src="/images/european-hare-6121jpg.webp" 
-              alt="Заєць" 
+            <img
+              src="/images/header_img.webp"
+              alt="Бурий ведмідь"
               className="site-logo rounded-circle me-2"
             />
-            <span className="fs-4">Сайт про зайців</span>
+            <span className="fs-4">Все про бурих ведмедів</span>
           </Link>
         </div>
 
         <nav className="main-nav">
-          <Link to="/" className={`nav-link text-white ${location.pathname === '/' ? 'active' : ''}`}>
+          <Link
+            to="/"
+            className={`nav-link text-white ${location.pathname === '/' ? 'active' : ''}`}
+          >
             Головна
           </Link>
-          <Link to="/morphology" className={`nav-link text-white ${location.pathname === '/morphology' ? 'active' : ''}`}>
-            Зовнішній вигляд зайців
+
+          <Link
+            to="/morphology"
+            className={`nav-link text-white ${location.pathname === '/morphology' ? 'active' : ''}`}
+          >
+            Зовнішній вигляд
           </Link>
-          <Link to="/nutrition" className={`nav-link text-white ${location.pathname === '/nutrition' ? 'active' : ''}`}>
-            Харчування зайців
+
+          <Link
+            to="/nutrition"
+            className={`nav-link text-white ${location.pathname === '/nutrition' ? 'active' : ''}`}
+          >
+            Харчування
           </Link>
-          <Link to="/population" className={`nav-link text-white ${location.pathname === '/population' ? 'active' : ''}`}>
-            Ареал зайців
+
+          <Link
+            to="/population"
+            className={`nav-link text-white ${location.pathname === '/population' ? 'active' : ''}`}
+          >
+            Ареал
           </Link>
-          <Link to="/photo" className={`nav-link text-white ${location.pathname === '/photo' ? 'active' : ''}`}>
-            Фотографії зайців
+
+          <Link
+            to="/photo"
+            className={`nav-link text-white ${location.pathname === '/photo' ? 'active' : ''}`}
+          >
+            Фотогалерея
           </Link>
         </nav>
 
@@ -57,6 +77,7 @@ function Header() {
               value={searchInput}
               onChange={(inputEvent) => setSearchInput(inputEvent.target.value)}
             />
+
             <button type="submit" className="btn btn-light">
               Пошук
             </button>

@@ -1,50 +1,100 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function Photo() {
   const images = [
-    { src: '/images/1200px-haas-in-het-grasjpg.webp', alt: 'Зайці в траві' },
-    { src: '/images/1200px-hasebeioberwerbejpg.webp', alt: 'Зайці в полі' },
-    { src: '/images/european-hare-6121jpg.webp', alt: 'Європейський заєць' },
-    { src: '/images/fFKuESpf7VTCGBNPscig.webp', alt: 'Зайці на лузі' },
-    { src: '/images/halljnes.webp', alt: 'Зайці в лісі' },
-    { src: '/images/zu6YRoYqGYVyExZ54dDT.webp', alt: 'Зайці на лузі' }
+    {
+      src: '/images/natural_environment.jpg',
+      alt: 'Бурий ведмідь у лісі',
+      caption: 'Ведмідь у природному середовищі'
+    },
+    {
+      src: '/images/brown-bear-water-hunt.jpg',
+      alt: 'Ведмідь біля річки',
+      caption: 'Полювання біля води'
+    },
+    {
+      src: '/images/Brown_bear.jpg',
+      alt: 'Ведмідь на галявині',
+      caption: 'Ведмідь на галявині'
+    },
+    {
+      src: '/images/little_bear.jpg',
+      alt: 'Маленьке ведмежа',
+      caption: 'Ведмежа'
+    },
+    {
+      src: '/images/bear-in-winter.jpg',
+      alt: 'Ведмідь взимку',
+      caption: 'Ведмідь взимку'
+    },
+    {
+      src: '/images/bear-in-the-forest.jpg',
+      alt: 'Ведмідь у горах',
+      caption: 'Ведмідь у гірській місцевості'
+    }
   ];
 
   return (
-    <main className="container px-4 py-4 flex-grow-1">
+    <main className="container py-4">
       <article>
-        <h2 className="h2 text-success mb-4">Фотогалерея зайців</h2>
-        <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
+        <h2 className="text-center text-success mb-4">Галерея</h2>
+
+        <div
+          id="carouselExampleIndicators"
+          className="carousel slide"
+          data-bs-ride="carousel"
+        >
           <div className="carousel-indicators">
-            {images.map((_, index) => (
+            {images.map((image, index) => (
               <button
-                key={index}
+                key={image.src}
                 type="button"
                 data-bs-target="#carouselExampleIndicators"
                 data-bs-slide-to={index}
-                className={index === 0 ? "active" : ""}
-                aria-current={index === 0 ? "true" : "false"}
-                aria-label={`Slide ${index + 1}`}
+                className={index === 0 ? 'active' : ''}
+                aria-current={index === 0 ? 'true' : undefined}
+                aria-label={`Слайд ${index + 1}`}
               ></button>
             ))}
           </div>
+
           <div className="carousel-inner">
             {images.map((image, index) => (
-              <div key={index} className={`carousel-item ${index === 0 ? "active" : ""}`}>
-                <a href={image.src} target="_blank" rel="noopener noreferrer">
-                  <img src={image.src} className="d-block w-100" alt={image.alt} />
-                </a>
+              <div
+                key={image.src}
+                className={`carousel-item ${index === 0 ? 'active' : ''}`}
+              >
+                <img
+                  src={image.src}
+                  className="d-block w-100 gallery-image"
+                  alt={image.alt}
+                />
+
+                <div className="carousel-caption">
+                  <p>{image.caption}</p>
+                </div>
               </div>
             ))}
           </div>
-          <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+
+          <button
+            className="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev"
+          >
             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Previous</span>
+            <span className="visually-hidden">Попередній</span>
           </button>
-          <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+
+          <button
+            className="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next"
+          >
             <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Next</span>
+            <span className="visually-hidden">Наступний</span>
           </button>
         </div>
       </article>

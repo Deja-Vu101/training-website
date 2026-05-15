@@ -1,14 +1,12 @@
-// Експорт специфікації Swagger/OpenAPI для документації про API
 export const swaggerSpec = {
-    // Версія специфікації OpenAPI
     openapi: '3.0.0',
-    // Загальна інформація про API
+
     info: {
-        title: 'API Сайту про Зайців',
+        title: 'API Сайту про Бурих Ведмедів',
         version: '1.0.0',
-        description: 'Документація API для Сайту про Зайців',
+        description: 'Документація API для Сайту про Бурих Ведмедів',
     },
-    // Налаштування серверів для тестування API
+
     servers: [
         {
             url:
@@ -18,20 +16,19 @@ export const swaggerSpec = {
             description: 'Development server',
         },
     ],
-    // Визначення кінцевих точок (endpoints) REST API та операцій з ними
+
     paths: {
-        '/api/rabbits': {
-            // GET запит для отримання всіх зайців
+        '/api/bears': {
             get: {
-                summary: 'Отримати всіх зайців',
+                summary: 'Отримати всіх бурих ведмедів',
                 responses: {
                     '200': {
-                        description: 'Список всіх зайців',
+                        description: 'Список всіх бурих ведмедів',
                         content: {
                             'application/json': {
                                 schema: {
                                     type: 'array',
-                                    items: { $ref: '#/components/schemas/Rabbit' },
+                                    items: { $ref: '#/components/schemas/Bear' },
                                 },
                             },
                         },
@@ -39,23 +36,31 @@ export const swaggerSpec = {
                 },
             },
 
-            // POST запит для створення нового зайця
             post: {
-                summary: 'Створити нового зайця',
+                summary: 'Створити нового бурого ведмедя',
                 requestBody: {
                     required: true,
                     content: {
                         'application/json': {
-                            schema: { $ref: '#/components/schemas/Rabbit' },
+                            schema: { $ref: '#/components/schemas/Bear' },
+                            example: {
+                                name: 'Бурко',
+                                age: 7,
+                                height: 130,
+                                weight: 280,
+                                gender: 'male',
+                                description: 'Дорослий самець бурого ведмедя',
+                                hibernationTime: 120,
+                            },
                         },
                     },
                 },
                 responses: {
                     '201': {
-                        description: "Створений об'єкт зайця",
+                        description: "Створений об'єкт бурого ведмедя",
                         content: {
                             'application/json': {
-                                schema: { $ref: '#/components/schemas/Rabbit' },
+                                schema: { $ref: '#/components/schemas/Bear' },
                             },
                         },
                     },
@@ -63,150 +68,181 @@ export const swaggerSpec = {
             },
         },
 
-        // Операції для конкретного зайця за ID
-        '/api/rabbits/{id}': {
-            // GET запит для отримання зайця за ID
+        '/api/bears/{id}': {
             get: {
-                summary: 'Отримати зайця за ID',
+                summary: 'Отримати бурого ведмедя за ID',
                 parameters: [
                     {
                         in: 'path',
                         name: 'id',
                         required: true,
                         schema: { type: 'string' },
-                        description: 'ID зайця',
+                        description: 'ID бурого ведмедя',
                     },
                 ],
                 responses: {
                     '200': {
-                        description: "Об'єкт зайця",
+                        description: "Об'єкт бурого ведмедя",
                         content: {
                             'application/json': {
-                                schema: { $ref: '#/components/schemas/Rabbit' },
+                                schema: { $ref: '#/components/schemas/Bear' },
                             },
                         },
                     },
-                    '404': { description: 'Зайця не знайдено' },
+                    '404': { description: 'Бурого ведмедя не знайдено' },
                 },
             },
 
-            // PUT запит для повного оновлення зайця за ID
             put: {
-                summary: 'Повністю оновити зайця',
+                summary: 'Повністю оновити бурого ведмедя',
                 parameters: [
                     {
                         in: 'path',
                         name: 'id',
                         required: true,
                         schema: { type: 'string' },
-                        description: 'ID зайця',
+                        description: 'ID бурого ведмедя',
                     },
                 ],
                 requestBody: {
                     required: true,
                     content: {
                         'application/json': {
-                            schema: { $ref: '#/components/schemas/Rabbit' },
+                            schema: { $ref: '#/components/schemas/Bear' },
+                            example: {
+                                name: 'Бурко',
+                                age: 8,
+                                height: 135,
+                                weight: 300,
+                                gender: 'male',
+                                description: 'Дорослий самець бурого ведмедя після оновлення даних',
+                                hibernationTime: 125,
+                            },
                         },
                     },
                 },
                 responses: {
                     '200': {
-                        description: "Оновлений об'єкт зайця",
+                        description: "Оновлений об'єкт бурого ведмедя",
                         content: {
                             'application/json': {
-                                schema: { $ref: '#/components/schemas/Rabbit' },
+                                schema: { $ref: '#/components/schemas/Bear' },
                             },
                         },
                     },
-                    '404': { description: 'Зайця не знайдено' },
+                    '400': { description: "Відсутні обов'язкові поля" },
+                    '404': { description: 'Бурого ведмедя не знайдено' },
                 },
             },
-            // PATCH запит для часткового оновлення зайця за ID
+
             patch: {
-                summary: 'Частково оновити зайця',
+                summary: 'Частково оновити бурого ведмедя',
                 parameters: [
                     {
                         in: 'path',
                         name: 'id',
                         required: true,
                         schema: { type: 'string' },
-                        description: 'ID зайця',
+                        description: 'ID бурого ведмедя',
                     },
                 ],
                 requestBody: {
                     required: true,
                     content: {
                         'application/json': {
-                            schema: { $ref: '#/components/schemas/Rabbit' },
+                            schema: { $ref: '#/components/schemas/BearPatch' },
+                            example: {
+                                weight: 310,
+                                hibernationTime: 130,
+                            },
                         },
                     },
                 },
                 responses: {
                     '200': {
-                        description: "Оновлений об'єкт зайця",
+                        description: "Оновлений об'єкт бурого ведмедя",
                         content: {
                             'application/json': {
-                                schema: { $ref: '#/components/schemas/Rabbit' },
+                                schema: { $ref: '#/components/schemas/Bear' },
                             },
                         },
                     },
-                    '404': { description: 'Зайця не знайдено' },
+                    '404': { description: 'Бурого ведмедя не знайдено' },
                 },
             },
-            // DELETE запит для видалення даних про зайця за ID
+
             delete: {
-                summary: 'Видалити дані про зайця',
+                summary: 'Видалити дані про бурого ведмедя',
                 parameters: [
                     {
                         in: 'path',
                         name: 'id',
                         required: true,
                         schema: { type: 'string' },
-                        description: 'ID зайця',
+                        description: 'ID бурого ведмедя',
                     },
                 ],
                 responses: {
                     '200': { description: 'Повідомлення про успішне видалення' },
-                    '404': { description: 'Зайця не знайдено' },
+                    '404': { description: 'Бурого ведмедя не знайдено' },
                 },
             },
         },
     },
 
-    // Визначення компонентів для повторного використання
     components: {
-        // Схеми даних
         schemas: {
-            // Схема об'єкта Заєць
-            Rabbit: {
+            Bear: {
                 type: 'object',
-                required: ['name', 'age', 'height', 'weight', 'gender'],
+                required: ['name', 'age', 'height', 'weight', 'gender', 'hibernationTime'],
                 properties: {
                     name: {
                         type: 'string',
-                        description: "Ім'я зайця",
+                        description: "Ім'я бурого ведмедя",
                     },
                     age: {
                         type: 'number',
-                        description: 'Вік зайця у роках',
+                        description: 'Вік бурого ведмедя у роках',
                     },
                     height: {
                         type: 'number',
-                        description: 'Висота зайця в сантиметрах',
+                        description: 'Висота бурого ведмедя в сантиметрах',
                     },
                     weight: {
                         type: 'number',
-                        description: 'Вага зайця в кілограмах',
+                        description: 'Вага бурого ведмедя в кілограмах',
                     },
                     gender: {
                         type: 'string',
                         enum: ['male', 'female'],
-                        description: 'Стать зайця',
+                        description: 'Стать бурого ведмедя',
                     },
                     description: {
                         type: 'string',
-                        description: "Опис зайця (необов'язкове поле)",
+                        description: "Опис бурого ведмедя, необов'язкове поле",
+                    },
+                    hibernationTime: {
+                        type: 'number',
+                        description: 'Час знаходження у сплячці, дні',
+                    },
+                },
+            },
+
+            BearPatch: {
+                type: 'object',
+                properties: {
+                    name: { type: 'string' },
+                    age: { type: 'number' },
+                    height: { type: 'number' },
+                    weight: { type: 'number' },
+                    gender: {
+                        type: 'string',
+                        enum: ['male', 'female'],
+                    },
+                    description: { type: 'string' },
+                    hibernationTime: {
+                        type: 'number',
+                        description: 'Час знаходження у сплячці, дні',
                     },
                 },
             },

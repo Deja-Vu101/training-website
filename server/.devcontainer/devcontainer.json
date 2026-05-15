@@ -1,0 +1,19 @@
+{
+  "name": "Brown Bears React Express MongoDB",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/mongodb:1": {
+      "version": "latest"
+    }
+  },
+  "forwardPorts": [3000, 5000, 27017],
+  "postCreateCommand": "sudo npm install -g yarn",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "mongodb.mongodb-vscode",
+        "Postman.postman-for-vscode"
+      ]
+    }
+  }
+}

@@ -310,3 +310,7 @@ footer {
     max-height: 300px;
   }
 }
+
+.rehabilitation-modal {
+  background-color: rgba(0, 0, 0, 0.35);
+}
